@@ -8,7 +8,6 @@ import fs from "fs";
 // Load env vars
 dotenv.config();
 
-// Load your company data once at startup
 const companyData = fs.readFileSync("./kb/company.txt", "utf8");
 
 const app = express();

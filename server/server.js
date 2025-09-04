@@ -4,11 +4,18 @@ import cors from "cors";
 import dotenv from "dotenv";
 import Groq from "groq-sdk";
 import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 // Load env vars
 dotenv.config();
 
-const companyData = fs.readFileSync("./kb/company.txt", "utf8");
+const companyData = fs.readFileSync(
+  path.join(__dirname, "kb", "company.txt"),
+  "utf8"
+);
 
 const app = express();
 app.use(cors());

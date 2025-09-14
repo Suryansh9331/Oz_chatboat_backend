@@ -8,12 +8,11 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
-// Health check
 app.get("/", (req, res) => {
   res.send("Groq proxy server running");
 });
+// Endpoint to handle chat messages
 
-// Chat endpoint
 app.post("/chat", async (req, res) => {
   try {
     const userMessage = req.body.message;

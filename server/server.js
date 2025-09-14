@@ -29,7 +29,7 @@ app.post("/chat", async (req, res) => {
         "Authorization": `Bearer ${process.env.GROQ_API_KEY}`
       },
       body: JSON.stringify({
-        model: "mixtral-8x7b-32768", // free & fast model
+        model: "mixtral-8x7b-32768", 
         messages: [
           { role: "system", content: "You are a helpful AI assistant." },
           { role: "user", content: userMessage }

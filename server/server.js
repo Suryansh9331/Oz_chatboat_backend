@@ -23,7 +23,7 @@ app.post("/chat", async (req, res) => {
         "Authorization": `Bearer ${groqKey}`
       },
       body: JSON.stringify({
-        model: "mixtral-8x7b-32768",
+        model: "llama3-70b-8192",
         messages: [
           { role: "system", content: "You are a helpful AI assistant." },
           { role: "user", content: userMessage }

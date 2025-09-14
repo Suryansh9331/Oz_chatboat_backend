@@ -2,17 +2,25 @@
 import express from "express";
 import fetch from "node-fetch";
 import dotenv from "dotenv";
+import cors from "cors";             // ⬅️ add this
 
 dotenv.config();
 
 const app = express();
+
+// ✅ enable CORS for all origins (or restrict to your React URL if you want)
+app.use(cors());                     // ⬅️ add this
+// If you want to allow only a specific origin, do:
+// app.use(cors({ origin: "http://localhost:5173" }));
+
 app.use(express.json());
 
+// Health check
 app.get("/", (req, res) => {
   res.send("Groq proxy server running");
 });
-// Endpoint to handle chat messages
 
+// Endpoint to handle chat messages
 app.post("/chat", async (req, res) => {
   try {
     const userMessage = req.body.message;
@@ -28,7 +36,7 @@ app.post("/chat", async (req, res) => {
         "Authorization": `Bearer ${process.env.GROQ_API_KEY}`
       },
       body: JSON.stringify({
-        model: "mixtral-8x7b-32768", 
+        model: "mixtral-8x7b-32768", // free & fast model
         messages: [
           { role: "system", content: "You are a helpful AI assistant." },
           { role: "user", content: userMessage }

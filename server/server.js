@@ -22,6 +22,7 @@ app.get("/", (req, res) => {
 
 // Endpoint to handle chat messages
 app.post("/chat", async (req, res) => {
+    console.log("Incoming body:", req.body);
   try {
     const userMessage = req.body.message;
 
